@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="dashboard-container">
+    <header class="dash-header">
+        <h1>Painel de Reparos</h1>
+        <a href="{% url 'novo_reparo' %}" class="btn-novo">+ Novo Reparo</a>
+    </header>
+
+    <section class="stats">
+        <p>Total de registros no banco: <strong>{{ reparos|length }}</strong></p>
+    </section>
+
+    <div class="grid-reparos">
+        {% for reparo in reparos %}
+        <div class="reparo-card">
+            <div class="card-topo">
+                <span class="tag-modelo">{{ reparo.equipamento.modelo }}</span>
+                <span class="data-id">#ID {{ reparo.id }}</span>
+            </div>
+            <h3>{{ reparo.equipamento.marca }}</h3>
+            <p><strong>Sintoma:</strong> {{ reparo.sintoma|truncatechars:50 }}</p>
+            <p><strong>Técnico:</strong> {{ reparo.tecnico_nome }}</p>
+            <div class="card-footer">
+                <a href="{% url 'detalhe' reparo.id %}" class="btn-editar">Ver Detalhes</a>
+            </div>
+        </div>
+        {% empty %}
+        <div class="empty-state">
+            <p>Nenhum reparo encontrado. Comece cadastrando um novo!</p>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

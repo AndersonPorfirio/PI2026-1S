@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="login-wrapper"> 
+    <div class="container" style="max-width: 600px; text-align: left;">
+        <h2 style="color: var(--primary); margin-top: 0;">Sobre o Projeto</h2>
+        <p><strong>Sistema de Cadastro de Reparos (SCR)</strong></p>
+        <p>Desenvolvido como parte do Projeto Integrador para a UNIVESP.</p>
+        <p>Este sistema utiliza Python (Django) e MySQL para catalogar diagnósticos de eletrônicos, facilitando a consulta de histórico de manutenção.</p>
+        <p style="margin-bottom: 30px;"><em>Desenvolvedor: Anderson Chaves</em></p>
+        
+        <a href="{% url 'index' %}" class="btn-novo" style="display: block; text-align: center; text-decoration: none;">Voltar</a>
+    </div>
+</div>
+{% endblock %}

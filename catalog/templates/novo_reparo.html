@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="dashboard-container">
+    <div class="container" style="max-width: 600px; text-align: left; margin: 0 auto;">
+        <h2 style="color: var(--primary);">Cadastrar Novo Reparo</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn-novo" style="width: 100%; border: none; cursor: pointer; margin-top: 10px;">SALVAR REPARO</button>
+        </form>
+        <a href="{% url 'index' %}" style="display: block; text-align: center; margin-top: 15px; color: #888; text-decoration: none;">Cancelar</a>
+    </div>
+</div>
+
+<style>
+    /* Estilo rápido para os campos do formulário ficarem escuros */
+    .input-moderno {
+        width: 100%;
+        padding: 10px;
+        background: #252525;
+        border: 1px solid #333;
+        border-radius: 6px;
+        color: white;
+        margin-top: 5px;
+    }
+    label { color: var(--primary); font-weight: bold; font-size: 0.9rem; }
+</style>
+{% endblock %}

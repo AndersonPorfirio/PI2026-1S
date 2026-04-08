@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="dashboard-container" style="max-width: 1100px;">
+    <h2 style="color: var(--primary);">Administração do Sistema</h2>
+
+    <div class="reparo-card" style="width: 100%; margin-bottom: 30px;">
+        <h3>Gerenciar Reparos</h3>
+        <table style="width: 100%; color: var(--text); border-collapse: collapse;">
+            <thead>
+                <tr style="border-bottom: 1px solid #333; text-align: left;">
+                    <th style="padding: 10px;">Equipamento</th>
+                    <th>Técnico</th>
+                    <th>Ação</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for reparo in reparos %}
+                <tr style="border-bottom: 1px solid #252525;">
+                    <td style="padding: 10px;">{{ reparo.equipamento.modelo }}</td>
+                    <td>{{ reparo.tecnico_nome }}</td>
+                    <td>
+                        <a href="{% url 'excluir_reparo' reparo.id %}" style="color: #ff4d4d; text-decoration: none; font-size: 0.8rem;" onclick="return confirm('Excluir este reparo?')">Remover</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="reparo-card" style="width: 100%;">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <h3>Gerenciar Usuários</h3>
+            <a href="{% url 'novo_usuario' %}" class="btn-novo" style="font-size: 0.8rem; padding: 5px 10px;">+ Novo Usuário</a>
+        </div>
+        <table style="width: 100%; color: var(--text); border-collapse: collapse; margin-top: 10px;">
+            <thead>
+                <tr style="border-bottom: 1px solid #333; text-align: left;">
+                    <th style="padding: 10px;">Username</th>
+                    <th>Status</th>
+                    <th>Ação</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for usuario in usuarios %}
+                <tr style="border-bottom: 1px solid #252525;">
+                    <td style="padding: 10px;">{{ usuario.username }}</td>
+                    <td>{% if usuario.is_superuser %}Admin{% else %}Técnico{% endif %}</td>
+                    <td>
+                        {% if not usuario.is_superuser %}
+                        <a href="{% url 'excluir_usuario' usuario.id %}" style="color: #ff4d4d; text-decoration: none; font-size: 0.8rem;" onclick="return confirm('Remover este usuário?')">Remover</a>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

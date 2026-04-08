@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="login-wrapper">
+    <div class="container" style="max-width: 500px; text-align: left;">
+        <h2 style="color: var(--primary);">Cadastrar Novo Técnico</h2>
+        <form method="post">
+            {% csrf_token %}
+            
+            <style>
+                .container p { color: #888; font-size: 0.8rem; margin-bottom: 15px; }
+                .container ul { color: #888; font-size: 0.75rem; padding-left: 20px; }
+                label { color: var(--primary); font-weight: bold; display: block; margin-top: 10px; }
+                input { width: 100%; padding: 10px; background: #252525; border: 1px solid #333; border-radius: 6px; color: white; margin-top: 5px; box-sizing: border-box; }
+            </style>
+
+            {{ form.as_p }}
+            
+            <button type="submit" class="btn-novo" style="width: 100%; border: none; cursor: pointer; margin-top: 20px;">CRIAR CONTA</button>
+        </form>
+        <a href="{% url 'painel_admin' %}" style="display: block; text-align: center; margin-top: 15px; color: #888; text-decoration: none;">Cancelar</a>
+    </div>
+</div>
+{% endblock %}

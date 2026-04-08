@@ -1,0 +1,116 @@
+:root {
+    --bg: #121212;
+    --card: #1e1e1e;
+    --primary: #00adb5;
+    --text: #eeeeee;
+}
+
+body {
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+    align-items: center; /* Centraliza verticalmente */
+    justify-content: center; /* Centraliza horizontalmente */;
+}
+
+.login-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 90vh; /* Ocupa quase a tela toda */
+}
+
+.container {
+    background: var(--card);
+    padding: 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+    width: 100%;
+    max-width: 350px; /* Impede que o formulário estique demais */
+    text-align: center;
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 6px;
+    border: 1px solid #333;
+    background: #252525;
+    color: white;
+    box-sizing: border-box; /* Garante que o padding não quebre a largura */
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    background: var(--primary);
+    border: none;
+    color: white;
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+/* Layout do Dashboard */
+.dashboard-container {
+    width: 90%;
+    max-width: 1000px;
+    margin: 20px auto;
+}
+
+.dash-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.btn-novo {
+    background-color: #00adb5;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+/* Grid de Cards */
+.grid-reparos {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.reparo-card {
+    background: #1e1e1e;
+    padding: 20px;
+    border-radius: 10px;
+    border-left: 5px solid #00adb5;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.card-topo {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    margin-bottom: 10px;
+    color: #888;
+}
+
+.tag-modelo {
+    background: #333;
+    color: #00adb5;
+    padding: 2px 8px;
+    border-radius: 4px;
+}
+
+.btn-editar {
+    color: #00adb5;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: bold;
+}

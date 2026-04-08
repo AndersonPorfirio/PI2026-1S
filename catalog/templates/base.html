@@ -1,0 +1,32 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Painel de Reparos</title>
+    <link rel="stylesheet" href="{% static 'geral.css' %}">
+</head>
+<body>
+    <header style="width: 90%; max-width: 1000px; display: flex; justify-content: space-between; align-items: center; margin: 0 auto; padding: 20px 0;">
+    <nav>
+        <a href="{% url 'index' %}" style="color: var(--primary); text-decoration: none; font-weight: bold; margin-right: 20px;">Dashboard</a>
+        <a href="{% url 'sobre' %}" style="color: var(--text); text-decoration: none; font-size: 0.9rem;">Sobre</a>
+    </nav>
+    
+    {% if user.is_authenticated %}
+    <form action="{% url 'logout' %}" method="post" style="display: inline;">
+        {% csrf_token %}
+        <button type="submit" style="background: none; border: none; color: #ff4d4d; cursor: pointer; font-size: 0.9rem; font-weight: bold;">Sair ({{ user.username }})</button>
+    </form>
+    {% endif %}
+    <nav>
+    {% if user.is_superuser %}
+        <a href="{% url 'painel_admin' %}" style="color: #ffcc00; text-decoration: none; font-size: 0.9rem; margin-left: 15px;">⚙ Gestão</a>
+    {% endif %}
+    </nav>
+    </header>
+    {% block content %}
+    {% endblock %}
+</body>
+</html>

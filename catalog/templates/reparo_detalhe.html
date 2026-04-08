@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="dashboard-container">
+    <a href="{% url 'index' %}" style="color: var(--primary); text-decoration: none;">← Voltar ao Painel</a>
+    
+    <div class="reparo-card" style="margin-top: 20px; border-left-width: 8px; width: 100%; max-width: 800px;">
+        <h1 style="color: var(--primary);">{{ reparo.equipamento.marca }} {{ reparo.equipamento.modelo }}</h1>
+        <p><strong>Técnico:</strong> {{ reparo.tecnico_nome }}</p>
+        <hr style="border: 0.5px solid #333; margin: 20px 0;">
+        
+        <h3 style="color: var(--primary);">Sintoma</h3>
+        <p>{{ reparo.sintoma }}</p>
+
+        <h3 style="color: var(--primary);">Causa Identificada</h3>
+        <p>{{ reparo.causa }}</p>
+
+        <h3 style="color: var(--primary);">Solução Aplicada</h3>
+        <p style="background: #252525; padding: 15px; border-radius: 6px;">{{ reparo.solucao }}</p>
+    </div>
+</div>
+{% endblock %}
