@@ -1,5 +1,6 @@
 from django import forms
 from .models import Reparo
+from .models import Equipamento, Reparo
 
 class ReparoForm(forms.ModelForm):
     class Meta:
