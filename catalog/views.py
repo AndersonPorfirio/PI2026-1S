@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from reparos.models import Reparo
 from reparos.forms import ReparoForm
+from reparos.forms import EquipamentoForm
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import user_passes_test
 from django.contrib.auth.forms import UserCreationForm
@@ -45,6 +46,16 @@ def painel_admin(request):
         'reparos': reparos,
         'usuarios': usuarios
     })
+
+def cadastrar_equipamento(request):
+    if request.method == 'POST':
+        form = EquipamentoForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('cadastrar_reparo') # Volta para a tela da sua imagem
+    else:
+        form = EquipamentoForm()
+    return render(request, 'cadastrar_equipamento.html', {'form': form})
 
 @user_passes_test(e_admin)
 def excluir_reparo(request, pk):
