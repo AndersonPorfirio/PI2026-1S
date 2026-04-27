@@ -11,4 +11,5 @@ urlpatterns = [
     path('usuario/excluir/<int:pk>/', views.excluir_usuario, name='excluir_usuario'),
     path('gestao/usuario/novo/', views.novo_usuario, name='novo_usuario'),
     path('api/v1/consultar/', views.api_reparos_list, name='api_reparos_publica'),
+    path('equipamento/novo/', views.cadastrar_equipamento, name='cadastrar_equipamento'),
 ]
