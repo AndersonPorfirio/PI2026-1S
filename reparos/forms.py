@@ -13,3 +13,12 @@ class ReparoForm(forms.ModelForm):
             'solucao': forms.Textarea(attrs={'class': 'input-moderno', 'rows': 3}),
             'tecnico_nome': forms.TextInput(attrs={'class': 'input-moderno'}),
         }
+class EquipamentoForm(forms.ModelForm):
+    class Meta:
+        model = Equipamento
+        fields = ['nome', 'modelo', 'marca', 'serie']
+        # Adicione classes CSS para manter o Dark Mode
+        widgets = {
+            field: forms.TextInput(attrs={'class': 'form-control'}) 
+            for field in ['nome', 'modelo', 'marca', 'serie']
+        }
